@@ -1,0 +1,340 @@
+/* ============================================================
+   中文情感分析系统 — 现代化 UI 样式
+   设计语言：简洁专业，低饱和度配色，卡片式布局
+   ============================================================ */
+
+/* ── CSS 变量 ───────────────────────────────── */
+:root {
+    --primary: #4f46e5;
+    --primary-light: #6366f1;
+    --primary-bg: #eef2ff;
+    --positive: #16a34a;
+    --positive-bg: #f0fdf4;
+    --positive-border: #bbf7d0;
+    --neutral: #6b7280;
+    --neutral-bg: #f9fafb;
+    --neutral-border: #e5e7eb;
+    --negative: #dc2626;
+    --negative-bg: #fef2f2;
+    --negative-border: #fecaca;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border: #e2e8f0;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,.08);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 0.2s ease;
+}
+
+/* ── 基础 ───────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 15px; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans CJK SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ── Header ─────────────────────────────────── */
+.header {
+    background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #6366f1 100%);
+    color: #fff;
+    padding: 32px 0 28px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.header-content { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.header h1 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    margin-bottom: 8px;
+}
+.header p {
+    font-size: .88rem;
+    opacity: .82;
+    font-weight: 400;
+    letter-spacing: .01em;
+}
+
+/* ── 主容器 ─────────────────────────────────── */
+.container {
+    max-width: 1240px;
+    margin: 28px auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+@media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
+
+/* ── 卡片 ───────────────────────────────────── */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: box-shadow var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+.card h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-bg);
+}
+.card h3 {
+    font-size: .92rem;
+    font-weight: 700;
+    margin: 20px 0 10px;
+    color: var(--text);
+}
+.section-desc {
+    font-size: .78rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* ── 输入区 ─────────────────────────────────── */
+textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: .93rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    background: #fafbfc;
+    color: var(--text);
+    line-height: 1.72;
+}
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.10);
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+}
+.hint {
+    font-size: .76rem;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: .88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: inherit;
+    letter-spacing: .01em;
+}
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(79,70,229,.25);
+}
+.btn-primary:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79,70,229,.30);
+}
+.btn-secondary {
+    background: #fff;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+}
+.btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .55; cursor: not-allowed; pointer-events: none; }
+
+.status-text {
+    font-size: .82rem;
+    margin-top: 10px;
+    min-height: 1.3em;
+    transition: color .2s;
+}
+
+/* ── 分词展示 ───────────────────────────────── */
+.token-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    min-height: 44px;
+    align-items: center;
+}
+.token-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: .8rem;
+    font-weight: 500;
+    background: var(--primary-bg);
+    color: var(--primary);
+    border: 1px solid #c7d2fe;
+    letter-spacing: .02em;
+}
+
+/* ── 模型结果卡片 ───────────────────────────── */
+.model-cards { display: grid; gap: 10px; margin-bottom: 8px; }
+.model-result {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color var(--transition);
+    background: #fafcfd;
+}
+.model-result:hover { border-color: #cbd5e1; }
+.model-info h4 {
+    font-size: .88rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: var(--text);
+}
+.model-info .confidence {
+    font-size: .78rem;
+    color: var(--text-secondary);
+}
+.model-badge {
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: .84rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: .02em;
+    white-space: nowrap;
+}
+
+.prob-bar-row {
+    display: flex;
+    gap: 8px;
+    font-size: .73rem;
+    margin-top: 6px;
+    align-items: center;
+}
+.prob-bar-label {
+    min-width: 18px;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: .72rem;
+}
+
+/* ── 画廊 ───────────────────────────────────── */
+.tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.tab {
+    padding: 7px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: .8rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--transition);
+    font-family: inherit;
+}
+.tab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow-sm); }
+.tab:hover:not(.active) { color: var(--text); }
+
+.gallery-grid {
+    display: grid;
+    gap: 12px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.gallery-grid::-webkit-scrollbar { width: 6px; }
+.gallery-grid::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+}
+.gallery-grid img:hover {
+    transform: scale(1.015);
+    box-shadow: 0 4px 16px rgba(0,0,0,.10);
+}
+.gallery-loading {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+    font-size: .88rem;
+}
+
+/* ── 图片模态框 ─────────────────────────────── */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.75);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    cursor: pointer;
+}
+.modal-overlay.active { display: flex; }
+.modal-img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0,0,0,.30);
+    cursor: default;
+}
+
+/* ── Footer ─────────────────────────────────── */
+.footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: .78rem;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    letter-spacing: .01em;
+}

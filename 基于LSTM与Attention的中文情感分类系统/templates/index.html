@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文情感分析系统 | LSTM + Attention</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>基于 LSTM 与 Attention 的中文情感分析系统</h1>
+            <p>RNN &middot; BiLSTM &middot; Attention-LSTM &nbsp;|&nbsp; Word2Vec + 深度学习文本三分类</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 左栏 -->
+        <div class="panel panel-left">
+            <section class="card input-card">
+                <h2>输入文本</h2>
+                <textarea id="inputText" placeholder="请输入中文文本进行情感分析...&#10;&#10;例如：这家店的服务态度特别好，菜品味道也不错，下次还会再来！" rows="5"></textarea>
+                <div class="button-row">
+                    <button id="predictBtn" class="btn btn-primary">分析情感</button>
+                    <button id="sampleBtn" class="btn btn-secondary">随机样本</button>
+                    <span class="hint">Ctrl + Enter 快捷提交</span>
+                </div>
+                <div id="inputStatus" class="status-text"></div>
+            </section>
+
+            <section class="card results-card" id="resultsCard" style="display:none;">
+                <h2>预测结果</h2>
+                <div class="token-display" id="tokenDisplay"></div>
+                <div class="model-cards" id="modelCards"></div>
+                <div class="attention-section" id="attentionSection" style="display:none;">
+                    <h3>Attention 注意力权重</h3>
+                    <p class="section-desc">颜色越深表示模型对该词赋予越高权重，即该词对最终分类决策影响越大。</p>
+                    <canvas id="attentionChart" height="120"></canvas>
+                </div>
+                <div class="prob-section" id="probSection" style="display:none;">
+                    <h3>三类概率分布对比</h3>
+                    <canvas id="probChart" height="250"></canvas>
+                </div>
+            </section>
+        </div>
+
+        <!-- 右栏 -->
+        <div class="panel panel-right">
+            <section class="card gallery-card">
+                <h2>分析图表</h2>
+                <div class="tabs" id="galleryTabs">
+                    <button class="tab active" data-cat="all">全部</button>
+                    <button class="tab" data-cat="training">训练过程</button>
+                    <button class="tab" data-cat="evaluation">模型评估</button>
+                    <button class="tab" data-cat="analysis">数据洞察</button>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-loading">图表加载中...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>自然语言处理课程项目 &nbsp;|&nbsp; PyTorch + Flask + Chart.js</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

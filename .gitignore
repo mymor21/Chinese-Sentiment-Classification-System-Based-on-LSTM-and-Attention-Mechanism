@@ -1,0 +1,41 @@
+# ── Python 缓存 ──
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── 虚拟环境 ──
+.conda/
+venv/
+env/
+.venv/
+
+# ── 模型权重（太大，请从网盘下载）──
+**/models/*.pt
+**/models/*.model
+**/models/word2vec_vectors.txt
+**/models/*_history.json
+
+# ── 预处理缓存（运行预处理脚本自动生成）──
+**/data/processed/*.pkl
+**/data/processed/*.npy
+**/data/processed/stats.json
+**/data/processed/vocab.json
+
+# ── 网盘 zip 包（不作为源码的一部分）──
+*.zip
+
+# ── 训练日志 / 调试 ──
+train_output.txt
+debug2.txt
+*.log
+
+# ── 可视化结果（运行可视化脚本自动生成）──
+results/
+
+# ── IDE / 操作系统 ──
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
